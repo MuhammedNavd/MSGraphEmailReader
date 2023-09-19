@@ -1,0 +1,12 @@
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\bin\Debug\net6.0\MSGraphEmailReader.deps.json
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\bin\Debug\net6.0\MSGraphEmailReader.dll
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\bin\Debug\net6.0\MSGraphEmailReader.pdb
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.csproj.AssemblyReference.cache
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.AssemblyInfoInputs.cache
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.AssemblyInfo.cs
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.csproj.CoreCompileInputs.cache
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.dll
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\refint\MSGraphEmailReader.dll
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\MSGraphEmailReader.pdb
+C:\Users\LTP-0\source\repos\MSGraphEmailReader\obj\Debug\net6.0\ref\MSGraphEmailReader.dll
