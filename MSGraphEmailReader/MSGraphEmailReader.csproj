@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>MSGraphEmailReader</PackageId>
+    <Title>MSGraphEmailReader</Title>
+    <Authors>Muhammed Naveed</Authors>
+    <Company>IT-Chennai</Company>
+    <Product>MSGraphEmailReader</Product>
+    <Description>MSGraphEmailReader is a .NET class library that provides functionality for reading emails from Microsoft Graph. It allows you to fetch emails, including their attachments, from a specified mailbox folder in Microsoft 365 using Microsoft Graph API.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Graph" Version="4.48.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.3.0" />
+  </ItemGroup>
+
+</Project>
