@@ -27,7 +27,20 @@ namespace MSGraphEmailReader
 #endif
 
             IMailFolderMessagesCollectionPage messages = await FetchMessage(graphEmailRequest, graphServiceClient, queryOptions);
-            List<GraphMail> graphMails = await SetGraphMails(graphEmailRequest, graphServiceClient, messages);
+            List<GraphMail> graphMails = new();
+            List<IMailFolderMessagesCollectionPage> allmessage = new()
+            {
+                messages
+            };
+            while (messages.NextPageRequest != null)
+            {
+                messages = await messages.NextPageRequest.GetAsync();
+                allmessage.Add(messages);
+            }
+            foreach (IMailFolderMessagesCollectionPage message in allmessage)
+            {
+                graphMails.AddRange(await SetGraphMails(graphEmailRequest, graphServiceClient, messages));
+            }
             return graphMails;
         }
 
