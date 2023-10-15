@@ -11,11 +11,41 @@
     <Company>IT-Chennai</Company>
     <Product>MSGraphEmailReader</Product>
     <Description>MSGraphEmailReader is a .NET class library that provides functionality for reading emails from Microsoft Graph. It allows you to fetch emails, including their attachments, from a specified mailbox folder in Microsoft 365 using Microsoft Graph API.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageTags>MSGraphEmailReader, Email, EmailReader, e-mail, outlook, MSGraph, Graph API, Microsoft, pop, imap, smtp, OutlookServices, MailKit, MailSystem, MSGraph, Microsoft Graph API, Email Reader, C#, .NET, Azure, Authentication, Microsoft 365, Email, Attachments, Azure AD, Mailbox, Email, Filtering, Client, Credentials, Graph, Service, Client</PackageTags>
+    <RepositoryUrl>https://github.com/MuhammedNavd/MSGraphEmailReader.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>microsoft-graph-connector-2023-01-04 00-00-00-2023-06-15 05-25-33.png</PackageIcon>
+    <Version>1.0.4</Version>
+    <PackageReleaseNotes>MSGraphEmailReader is a .NET class library that provides functionality for reading emails from Microsoft Graph. It allows you to fetch emails, including their attachments, from a specified mailbox folder in Microsoft 365 using Microsoft Graph API.
+Release 1.0.2 : In 1st release mail will be fetch from CurrentPage only. In 1.0.2 release Fetch Mails based on Pagination will read all e-mails from current page &amp; next page also.
+Release 1.0.4 : In this release mail will be fetch based on un-open in the mail box. The Un-Opened mails will be read and process.</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\microsoft-graph-connector-2023-01-04 00-00-00-2023-06-15 05-25-33.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Graph" Version="4.48.0" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
