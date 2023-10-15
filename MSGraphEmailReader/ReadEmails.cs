@@ -111,5 +111,70 @@ namespace MSGraphEmailReader
                 FileName = fileStream.Name,
             });
         }
+
+        public async Task<List<GraphMail>> ReadUnopenedEmailsAsync(GraphEmailRequest graphEmailRequest)
+        {
+            GraphServiceClient graphServiceClient = await FetchGraphServiceClient(graphEmailRequest);
+            // To filter for unopened emails
+            var queryOptions = new List<QueryOption>
+            {
+                 new QueryOption("$filter", "IsRead eq false")
+            };
+
+            List<GraphMail> graphMails = new();
+            // Get unopened messages from the shared mailbox folder
+            IMailFolderMessagesCollectionPage messages = await FetchMessage(graphEmailRequest, graphServiceClient, queryOptions);
+            List<IMailFolderMessagesCollectionPage> allmessage = new()
+            {
+                messages
+            };
+            while (messages.NextPageRequest != null)
+            {
+                messages = await messages.NextPageRequest.GetAsync();
+                allmessage.Add(messages);
+            }
+            foreach (IMailFolderMessagesCollectionPage messageCollection in allmessage)
+            {
+                return await ProcessGraphMail(userMailId: graphEmailRequest.UserMailAddress, graphServiceClient: graphServiceClient, messages: messageCollection);                
+            }
+            return graphMails;
+        }
+        private static async Task<List<GraphMail>> ProcessGraphMail(string? userMailId, GraphServiceClient graphServiceClient, IMailFolderMessagesCollectionPage messages)
+        {
+            List<GraphMail> graphMails = new();
+            foreach (Message message in messages.CurrentPage)
+            {
+                GraphMail graphMail = new();
+                graphMail.From = message.From.EmailAddress.Address;
+                graphMail.Subject = message.Subject;
+                graphMail.Body = message.Body.Content;
+                if (message.Attachments != null && message.Attachments.Count > 0)
+                {
+                    foreach (Attachment attachment in message.Attachments)
+                    {
+                        if (attachment is FileAttachment)
+                        {
+                            Attachment fileStream = await graphServiceClient.Users[userMailId]
+                                                    .Messages[message.Id]
+                                                    .Attachments[attachment.Id]
+                                                    .Request().GetAsync();
+                            FileAttachment fileAttachment = fileStream as FileAttachment;
+                            graphMail.Attachments.Add(new GraphMail.Attachment
+                            {
+                                Content = fileAttachment.ContentBytes,
+                                ContentType = fileAttachment.ContentType,
+                                FileName = fileStream.Name,
+                            });
+                        }
+                    }
+
+                    // Delete the email after processing
+                    await graphServiceClient.Users[userMailId].Messages[message.Id].Request().DeleteAsync();
+                    graphMails.Add(graphMail);
+                }
+            }
+
+            return graphMails;
+        }
     }
 }

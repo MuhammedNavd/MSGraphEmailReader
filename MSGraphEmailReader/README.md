@@ -8,6 +8,7 @@ MSGraphEmailReader is a .NET class library that provides functionality for readi
 - Retrieve emails based on various filters, such as received date and time.
 - Retrieve email attachments.
 - Simple and easy-to-use API for integrating with Microsoft Graph.
+- Also Retrieve Un-opened emails based on filter. 
 
 ## Prerequisites
 
@@ -21,6 +22,9 @@ Before using MSGraphEmailReader, make sure you have the following prerequisites 
 
 - **User Mailbox and Shared Mailbox Information**: You should have the email addresses and folder IDs for the user mailbox and the shared mailbox folder from which you want to read emails.
 
+- **While Using ReadUnopenedEmailsAsync**: Need to give some specific permissions `Mail.ReadWrite` or `Mail.Send` depending on your use case.
+
+
 ## Getting Started
 
 To get started with MSGraphEmailReader, follow these steps:
@@ -31,7 +35,10 @@ To get started with MSGraphEmailReader, follow these steps:
 
 3. Initialize the `GraphEmailRequest` object with your configuration.
 
-4. Use the `ReadEmailAsync` method to retrieve emails from Microsoft Graph.
+4. Use the `ReadEmailAsync` method to retrieve emails from Microsoft Graph based on the specific Dateframe.
+
+5. Use the `ReadUnopenedEmailsAsync` method to read all un-opened emails and their attachments without applying a date filter.
+
 
 ```csharp
 // Example usage
